@@ -1,4 +1,10 @@
+variable "app_name" {
+  description = "The name of the application"
+  default = "my_app"
+}
+
 variable "node_ami" {
+  # Only support Ubuntu AMI for now
   description = "AMI for the node instances"
   default = "ami-003c463c8207b4dfa"
 }
@@ -10,13 +16,9 @@ variable "node_instance_type" {
 
 variable "worker_instance_number" {
   description = "Number of worker instances"
-  default = 1
+  default = 2
 }
 
-variable "app_name" {
-  description = "The name of the application"
-  default = "swarm"
-}
 
 variable "vpc_cidr" {
   # please consider to update VPC module in vpc.tf if you change the subnet mask that is different from /16
@@ -26,7 +28,9 @@ variable "vpc_cidr" {
 
 variable "tags" {
   description = "tags for the resources"
-  default = {}
+  default = {
+    Project = "swarm"
+  }
 }
 
 variable "region" {
